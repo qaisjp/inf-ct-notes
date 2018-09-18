@@ -86,7 +86,7 @@ Generates the IR used by the rest of the compiler. Sometimes the AST is the IR.
 ### Backend (IR to machine code)
 
 ```
---(IR)--> Instruction Selection --(IR)--> Register allocation --(IR)--> Instruction scheduling --(Machine code)-->
+--(IR)--> Instruction Selection --(IR)--> Register Allocation --(IR)--> Instruction Scheduling --(Machine code)-->
 
 Each stage can produce an errors.
 ```
@@ -97,8 +97,47 @@ Each stage can produce an errors.
 
 Automation has been less succesful in the backend :(
 
-**The coursework will only contain Instruction Selection. The coursework doesn't care about the other two here.**
+**The coursework will only contain Instruction Selection. The coursework doesn't care about the other two here.** The aim is to produce _correct_ machine code. **The time limit is 10 seconds for your compiler.**
 
-**The aim is to produce _correct_ machine code.**
+**Instruction Selection**:
 
-**The time limit is 10 seconds for your compiler.**
+- Produce fast, compact code.
+- Take advantage of target features like addressing modes
+- Usually viewed as a _pattern matching_ problem
+- adhoc methods, pattern matching, dynamic programming
+- Example: madd instruction
+
+##### madd instruction
+
+multiplier accumulator. can multiply and add at the same time (add is free!!!!)
+
+`x * y + z` is just ONE op :)
+
+It takes three parameters.
+
+But if you have `x * y` somewhere else, you might choose to figure out `x * y` once and just add `z` that one time.
+
+Of course in this particular case both ways will result in just two operations. (`x * y + z`, `x * y` VS `x * y`, `+ z`)
+
+**Register Allocation**:
+
+- Have each val in a register when used.
+- Manage a limited set of resources.
+- Changes instruction choices, inserts `LOAD`s and `STORE`s (this is called spilling).
+- Optimal allocation is NP-Complete (1 or k registers). Compiler approximate solutions to this problem.
+
+**Instruction Scheduling**:
+
+- Avoid hardware stalls and interlocks
+- Optimal scheduling is NP-Complete in nearly all cases
+- There are well developed techniques
+- Can increase lifetime of vars by changing the allocation.
+
+### Between the frontend and backend
+
+This is the subject of UG4 Compiler Optimisation.
+
+- Optimisation.
+- Analyses IR and rewrites/transforms IR
+- Reduce running time (or improve space, power consumption)
+- **Must preserve meaning of the code** ("measured by values of named variables")
