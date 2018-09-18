@@ -5,7 +5,9 @@
 - empty files
 - lexer:
   - integer literals include multiple integers, like `00`
-  - string literals shouldn't go onto multiple lines
+  - string literals:
+    - shouldn't go onto multiple lines (shouldn't contain raw the single character `\n`)
+    - Escape sequences are fixed: https://docs.oracle.com/javase/tutorial/java/data/characters.html
   - `returner`/`tif`/`felser` should not trigger `return`/`if`/`else`
   - `2+2` and `2 +2` and `2 + 2` are the same
   - Watch out, `2 >! false` and `2>!0` are valid. (it's `2 > 1`)
