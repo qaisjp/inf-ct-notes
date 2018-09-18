@@ -1,4 +1,4 @@
-# inf-ct on [learn](http://course.inf.ed.ac.uk/ct) and on [inf.ed.ac.uk](https://www.inf.ed.ac.uk/teaching/courses/ct/18-19/)
+# inf-ct on [inf.ed.ac.uk](https://www.inf.ed.ac.uk/teaching/courses/ct/18-19/)
 
 # Notes
 
