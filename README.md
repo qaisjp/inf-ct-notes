@@ -100,3 +100,5 @@ Automation has been less succesful in the backend :(
 **The coursework will only contain Instruction Selection. The coursework doesn't care about the other two here.**
 
 **The aim is to produce _correct_ machine code.**
+
+**The time limit is 10 seconds for your compiler.**
