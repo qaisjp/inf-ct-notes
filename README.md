@@ -167,8 +167,7 @@ run(y + 4) // we know this is 9, compile-time
 Reduce cost of operations
 
 ```cpp
-int y;
-int x;
+int x, y;
 
 y = x^2 // becomes x * x
 
