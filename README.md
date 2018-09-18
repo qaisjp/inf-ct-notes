@@ -72,6 +72,8 @@ Each stage can generate errors
 - Hand-coded parsers are fairly easy to build
 - Most books advocate using automatic parser generators
 
+Mapping source like `gravity * 2` into an abstract syntax tree.
+
 **Semantic analyser**:
 - Semantic = context-sensitive
 - Example: checks var/func declared before use
