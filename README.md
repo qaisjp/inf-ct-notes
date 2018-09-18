@@ -54,6 +54,8 @@ Multiple frontend to the backend.
             _______________________
             |                     |
 Source -> Scanner --(char)--> Tokeniser --(token)--> Parser --(AST)--> Semantic Analyser --(AST)--> IR Generator --(IR)-->
+
+Each stage can generate errors
 ```
 
 **Lexer** for lexical analysis:
@@ -74,3 +76,7 @@ Source -> Scanner --(char)--> Tokeniser --(token)--> Parser --(AST)--> Semantic 
 - Semantic = context-sensitive
 - Example: checks var/func declared before use
 - Example: type checking
+
+**IR generator**:
+
+Generates the IR used by the rest of the compiler. Sometimes the AST is the IR.
