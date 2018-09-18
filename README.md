@@ -6,3 +6,4 @@
 
 _2018-09-18_
 
+Corner cases: empty files
