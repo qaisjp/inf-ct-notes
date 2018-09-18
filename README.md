@@ -11,6 +11,7 @@
   - `returner`/`tif`/`felser` should not trigger `return`/`if`/`else`
   - `2+2` and `2 +2` and `2 + 2` are the same
   - Watch out, `2 >! false` and `2>!0` are valid. (it's `2 > 1`)
+  - `/*/*/` is entirely one comment. `/* */` and `/* _*/` need checks (odd/even problem)
 
 # Notes
 
