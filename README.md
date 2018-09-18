@@ -1,8 +1,10 @@
 # inf-ct on [inf.ed.ac.uk](https://www.inf.ed.ac.uk/teaching/courses/ct/18-19/)
 
-## Corner cases to account for:
+## Edge cases to account for:
 
 - empty files
+- lexer:
+  - integer literals include multiple integers, like `00`
 
 # Notes
 
