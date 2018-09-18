@@ -159,14 +159,17 @@ int x = 3
 
 // some code that doesn't touch x
 
-y = x + 2 // we know this is 5, compile-time
+int y = x + 2 // we know this is 5, compile-time
 
 run(y + 4) // we know this is 9, compile-time
 ```
 
 Reduce cost of operations
 
-```
+```cpp
+int y;
+int x;
+
 y = x^2 // becomes x * x
 
 y = 2 * x // becomes x << 1
