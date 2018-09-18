@@ -141,3 +141,34 @@ This is the subject of UG4 Compiler Optimisation.
 - Analyses IR and rewrites/transforms IR
 - Reduce running time (or improve space, power consumption)
 - **Must preserve meaning of the code** ("measured by values of named variables")
+
+### Optimiser (after backend)
+
+Optimises away branches like
+
+```go
+if (false) {
+    // do something
+}
+```
+
+Constant expressions
+
+```cpp
+int x = 3
+
+// some code that doesn't touch x
+
+y = x + 2 // we know this is 5, compile-time
+
+run(y + 4) // we know this is 9, compile-time
+```
+
+Reduce cost of operations
+
+```
+y = x^2 // becomes x * x
+
+y = 2 * x // becomes x << 1
+```
+
