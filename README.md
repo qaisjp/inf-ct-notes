@@ -82,3 +82,18 @@ Mapping source like `gravity * 2` into an abstract syntax tree.
 **IR generator**:
 
 Generates the IR used by the rest of the compiler. Sometimes the AST is the IR.
+
+### Backend (IR to machine code)
+
+```
+--(IR)--> Instruction Selection --(IR)--> Register allocation --(IR)--> Instruction scheduling --(Machine code)-->
+
+Each stage can produce an errors.
+```
+
+- Choose instructions to implement each IR operations
+- Decide which values to keep in registers
+- Ensure conformance with system interfaces
+
+Automation has been less succesful in the backend :(
+
