@@ -5,6 +5,7 @@
 - empty files
 - lexer:
   - integer literals include multiple integers, like `00`
+  - string literals shouldn't go onto multiple lines
 
 # Notes
 
