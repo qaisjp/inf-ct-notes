@@ -2,6 +2,8 @@
 
 ## Edge cases to account for:
 
+**In general, check against gcc.***
+
 - empty files
 - lexer:
   - integer literals include multiple integers, like `00`
