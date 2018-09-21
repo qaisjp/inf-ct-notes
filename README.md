@@ -222,7 +222,8 @@ Formallay, a grammar `G = (S,N,T,P)`
 My maybe correct solution:
 
 ```
-number :: sign digit+
+number :: [sign] digit+
 digit :: 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9
 sign :: + | -
 ```
+
