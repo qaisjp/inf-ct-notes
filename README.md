@@ -292,10 +292,23 @@ public type visitFunCall(FunCall fc) {
     Expression arg = args[i];
     VarDecl vd = params[i];
     
-    if (args[i] != params[i]) {
-      
+    Type argT = arg.accept(this);
+    Type vdT = vd.type;
+    
+    // We don't do implicit typecasting so we directly compare
+    // But if we want char->int, then we could automatically cast here
+    if (!argT.equal(vdT)) {
+      error();
+      // return null; // don't return null yet, keep loopin'
     }
   }
+  
+  // Might wanna do a "yo errors return null" thing here
+  // Not doing it (i.e. recovering) so we can report multiple errors
+  
+  // Set the funcall type
+  fc.type = fc.fd.type;
+  return fc.type;
 }
 
 // Example
