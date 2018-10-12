@@ -173,7 +173,7 @@ sw $t1, 12($t0)         # *($t0+12) = $t1
 
 - Branches:
     ```
-    b   target              # unconditional branch to target
+    b   target              # unconditional branch to target (relative address)
     beq $t0, $t1, target    # ==
     blt $t0, $t1, target    # <
     ble $t0, $t1, target    # <=
@@ -182,4 +182,44 @@ sw $t1, 12($t0)         # *($t0+12) = $t1
     bne $t0, $t1, target    # !=
     ```
 
-All branch instructions use a target label!
+    All branch instructions use a target label!
+
+- Jumps
+    ```
+    j   target
+    # unconditional jump (absolute address)
+    ```
+    
+    ```
+    jr  $t3
+    # jump to address contained in $t3 ("jump register")
+    ```
+- Subroutine (function) call
+    ```
+    jal label
+    # "jump and link"
+    ```
+        - copy program counter (return address) to register `$ra` (return address register)
+        - jump to program instruction at label
+    
+    ```
+    jr $jr
+    # "jump register"
+    ```
+        - jump to return address in `$ra` (stored by `jal` instruction)
+
+    In terms of nested function calls, the return address should be saved to the stack and restored accordingly.
+
+## System calls
+
+Syscalls are used to interface with the operating system. E.g i/o or dynamic memory allocation.
+
+Using system calls:
+
+1. load the service number in `$v0`
+1. load argument values in `$a0`, `$a1`, ...
+1. issue the syscall instruction
+1. retrieve return value if any
+
+[See full list of system calls here](https://www.inf.ed.ac.uk/teaching/courses/ct/18-19/slides/10-mips-assembly.pdf#page=18).
+        
