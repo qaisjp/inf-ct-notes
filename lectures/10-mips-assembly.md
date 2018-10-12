@@ -125,7 +125,7 @@ sw $t1, var1    # store contents of $t1 into mem: var1 = 5
 
 Write the assembly program corresponding to the following C code:
 
-```asm
+```c
 struct point_t {
     int x ;
     int y ;
