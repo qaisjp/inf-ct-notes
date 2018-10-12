@@ -168,3 +168,18 @@ sw $t1, 12($t0)         # *($t0+12) = $t1
 # We reuse $t0 because we are smart humans.
 # The compiler won't know, and so might want to use another register.
 ```
+
+## Control structures
+
+- Branches:
+    ```
+    b   target              # unconditional branch to target
+    beq $t0, $t1, target    # ==
+    blt $t0, $t1, target    # <
+    ble $t0, $t1, target    # <=
+    bgt $t0, $t1, target    # >
+    bge $t0, $t1, target    # >=
+    bne $t0, $t1, target    # !=
+    ```
+
+All branch instructions use a target label!
