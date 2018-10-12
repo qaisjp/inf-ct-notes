@@ -66,3 +66,5 @@ syscall           # tell OS to perform syscall
 - two formats for addressing (name or number: `$zero` or `$0`)
 - holds 32 bits value (= 4 bytes = 1 word)
 - stack grows from high memory to low memory
+
+[See full list here](https://www.inf.ed.ac.uk/teaching/courses/ct/18-19/slides/10-mips-assembly.pdf#page=7).
