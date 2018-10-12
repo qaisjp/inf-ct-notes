@@ -6,10 +6,10 @@ _2018-10-12_ - Lecture 10
 1. Overview
 2. Registers
 3. Instructions
-  - Arithmetic
-  - Memory
-  - Control Structures
-  - System Calls
+    - Arithmetic
+    - Memory
+    - Control Structures
+    - System Calls
 
 ## Assembly program template
 
@@ -68,3 +68,55 @@ syscall           # tell OS to perform syscall
 - stack grows from high memory to low memory
 
 [See full list here](https://www.inf.ed.ac.uk/teaching/courses/ct/18-19/slides/10-mips-assembly.pdf#page=7).
+
+## Arithmetic instructions
+
+- Most use three operands
+- All operands are registered (no memory access)
+- All operands are 4 bytes (word)
+
+[See many examples here](https://www.inf.ed.ac.uk/teaching/courses/ct/18-19/slides/10-mips-assembly.pdf#page=9).
+
+## Load/Store Instructions
+
+- Memory access only allowed with explicit load and store instructions (load/store architecture)
+- All other instructions use register operands
+- Load
+  - `lw   register_denitation, mem_source`
+    copy a word (4 bytes) at source memory to destination register
+  - `lb   register_destination, mem_source`
+    copy a byte to low-order byte of destination register (sign extend higher-order bytes)
+  - `li   register_destination, value`
+    load immediate value into destination register
+- Store
+  - `sw   register_source, mem_destination`
+    store a word (4 bytes) from source register to memory location
+  - `sb   register_source, mem_destination`
+    store a byte (low-order) from source register to memory location
+
+_Example_
+
+```asm
+.data
+var1: .word 23  # declare storage for var1; initial value 23
+
+.text
+lw $t0, var1    # load contents of memory location into register $t0: $t0 = 23
+li $t1, 5       # $t1 = 5 (load immediate)
+sw $t1, var1    # store contents of $t1 into mem: var1 = 5
+```
+## Indirect and Based Addressing
+
+- load address
+  - `la $t0, var1`
+    copy memory address of var1 into register `$t0`
+- indirect addressing:
+  - `lw $t1, ($t0)`
+    load word at memory address contained in `$t0` into `$t2`
+  - `sw $t2, ($t0)`
+    store word in register `$t2` into memory at address contained in `$t0`
+- based/indexed addressing (useful for **field access in struct**):
+  - `lw $t2, 4($t0)`
+    load word at memory address (`$t0+4`) into register `$t2`
+  - `sw $t2, -12($t0)`
+    store content of register `$t2` into memory at address `($t0-12)`
