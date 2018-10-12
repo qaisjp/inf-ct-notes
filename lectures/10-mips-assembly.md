@@ -120,3 +120,51 @@ sw $t1, var1    # store contents of $t1 into mem: var1 = 5
     load word at memory address (`$t0+4`) into register `$t2`
   - `sw $t2, -12($t0)`
     store content of register `$t2` into memory at address `($t0-12)`
+
+## Exercise
+
+Write the assembly program corresponding to the following C code:
+
+```asm
+struct point_t {
+    int x ;
+    int y ;
+}
+
+struct point_t p ;
+int arr [12];
+
+void main () {
+    p.x = 2;
+    p.y = 4;
+    arr [3] = 6;
+}
+```
+
+### My solution
+
+```asm
+.data
+
+arr:        .space  48  # allocate 12 integers, 12*4 
+point_t_p:  .space  8   # allocate two integers (first is x, first is y)
+
+.text
+                        # p.x = 2;
+la $t0, point_t_p       # $t0 = &point_t_p
+li $t1, 2               # $t1 = 2
+sw $t1, ($t0)           # *$t0 = $t1
+
+                        # p.y = 4;
+li $t1, 4               # $t1 = 4
+sw $t1, 4($t0)          # *($t0+4) = $t1
+
+                        # arr[3] = 6;
+la $t0, arr             # $t0 = &arr        (*)
+li $t1, 6               # $t1 = 6
+sw $t1, 12($t0)         # *($t0+12) = $t1
+
+# Note(*)
+# We reuse $t0 because we are smart humans.
+# The compiler won't know, and so might want to use another register.
+```
