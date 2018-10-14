@@ -1,5 +1,5 @@
-## Automatic Lexer Generation
-_2018-09-25_ - Lecture 4
+## Automatic Lexer Generation and Top-down Parsing
+_2018-09-25_ - Lecture 4, 5
 
 Starting from a collection of regular expressions we can automatically generate a Lexer. An FSA is used for the construction.
 
