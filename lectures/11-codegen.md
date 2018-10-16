@@ -180,7 +180,7 @@ Register visitBinOp(BinOp binOp) {
 ```
 
 _Why free registers if we have an infinite amount of them?_  
-In our implementation we won't have a register pass so we can't just use them all. The program given in tests will never exceed ~30 registers, it'll always have less. We would quickly run out of registers in the real architecture.
+In our implementation we won't have a register pass so we can't just use them all. The program given in tests will never exceed ~30 registers, it'll always have less. We would quickly run out of registers in the real architecture. Always try to free the register as soon as you can (no cost to this).
 
 # Visitor impl for variables
 
