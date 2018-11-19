@@ -2,10 +2,6 @@
 
 _2018-11_16_
 
-## Lecture Recordings.
-
-Aaron Smith doesn't let his lectures be recorded. I don't like him. He's not a great lecturer either.
-
 ## Data Flow Analysis
 
 Liveness flows backwards. That's where data-flow comes from.
