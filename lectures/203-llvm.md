@@ -81,3 +81,21 @@ C = B     D(C)    O(?)
 
 Backwards is better for some reason, "it will converge faster".
 
+
+## `isa<>`
+
+- The Instruction class in LLVM inherits from the Value class
+- Iterating over instructions in a function/basic block returns a Value*
+- How do you know which type of instruction you are looking at?
+  - `isa<Type>(Value)`
+
+```
+#include “llvm/IR/Instructions.h”
+for(inst_iterator I = inst_begin(F), E = inst_end(F); I != E; ++I)
+   if (isa<CallInst>(*I))
+      outs() << “Found a call: “ << *I << “\n”;
+```
+
+- outs() goes to stdout
+- errs() goes to stderr <- this one will probably be captured
+
